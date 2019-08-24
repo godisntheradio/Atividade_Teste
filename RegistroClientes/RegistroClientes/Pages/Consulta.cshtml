@@ -2,8 +2,33 @@
 @model RegistroClientes.Pages.ConsultaModel
 @{
 }
-<div class="text-center">
-    <h1 class="display-4">Página de consulta</h1>
-    <p>lista de clientes</p>
-
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Página de consulta</h1>
+        <p>lista de clientes</p>
+        
+        <table class="col-md-6 offset-md-3 text-center table">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Data de nascimento</th>
+            </tr>
+            @foreach (Cliente c in Model.Clientes)
+            {
+                <tr scope="row">
+                    <td>
+                        @c.ID
+                    </td>
+                    <td>
+                        @c.Name
+                    </td>
+                    <td>
+                        @c.Email
+                    </td>
+                    <td>
+                        @c.DateOfBirth.Date
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
