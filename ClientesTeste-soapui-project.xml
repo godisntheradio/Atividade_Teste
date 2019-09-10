@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="32cfd2fc-efae-438a-8e68-a74aed6c8406" activeEnvironment="Default" name="ClientesTeste" resourceRoot="" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="008b2dc7-ac13-45e8-b76b-73f2e2c24022" wsaVersion="NONE" name="ClienteWSSoap" type="wsdl" bindingName="{http://tempuri.org/}ClienteWSSoap" soapVersion="1_1" anonymous="optional" definition="https://localhost:44343/ClienteWS.asmx?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://localhost:44343/ClienteWS.asmx?wsdl"><con:part><con:url>https://localhost:44343/ClienteWS.asmx?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="NomeCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NomeClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeClienteResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListaDeClientes">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ListaDeClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListaDeClientesResult" type="tns:ArrayOfClientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfClientes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Clientes" nillable="true" type="tns:Clientes"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Clientes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string"/>
+          <s:element minOccurs="1" maxOccurs="1" name="DOB" type="s:dateTime"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SalvarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ocliente" type="tns:Clientes"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SalvarClienteResult" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="NomeClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:NomeCliente"/>
+  </wsdl:message>
+  <wsdl:message name="NomeClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:NomeClienteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListaDeClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListaDeClientes"/>
+  </wsdl:message>
+  <wsdl:message name="ListaDeClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListaDeClientesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SalvarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvarCliente"/>
+  </wsdl:message>
+  <wsdl:message name="SalvarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvarClienteResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ClienteWSSoap">
+    <wsdl:operation name="NomeCliente">
+      <wsdl:input message="tns:NomeClienteSoapIn"/>
+      <wsdl:output message="tns:NomeClienteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeClientes">
+      <wsdl:input message="tns:ListaDeClientesSoapIn"/>
+      <wsdl:output message="tns:ListaDeClientesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SalvarCliente">
+      <wsdl:input message="tns:SalvarClienteSoapIn"/>
+      <wsdl:output message="tns:SalvarClienteSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClienteWSSoap" type="tns:ClienteWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="NomeCliente">
+      <soap:operation soapAction="http://tempuri.org/NomeCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeClientes">
+      <soap:operation soapAction="http://tempuri.org/ListaDeClientes" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvarCliente">
+      <soap:operation soapAction="http://tempuri.org/SalvarCliente" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClienteWSSoap12" type="tns:ClienteWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="NomeCliente">
+      <soap12:operation soapAction="http://tempuri.org/NomeCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeClientes">
+      <soap12:operation soapAction="http://tempuri.org/ListaDeClientes" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvarCliente">
+      <soap12:operation soapAction="http://tempuri.org/SalvarCliente" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClienteWS">
+    <wsdl:port name="ClienteWSSoap" binding="tns:ClienteWSSoap">
+      <soap:address location="https://localhost:44343/ClienteWS.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="ClienteWSSoap12" binding="tns:ClienteWSSoap12">
+      <soap12:address location="https://localhost:44343/ClienteWS.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://localhost:44343/ClienteWS.asmx</con:endpoint></con:endpoints><con:operation id="4860f576-d4f2-4c5e-a6a6-ec8ffb076f7d" isOneWay="false" action="http://tempuri.org/NomeCliente" name="NomeCliente" bindingOperationName="NomeCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6d54edf1-9795-4103-b1e3-bec0d6a38fb8" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:44343/ClienteWS.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:NomeCliente>\r
+         <tem:idCliente>5</tem:idCliente>\r
+      </tem:NomeCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/NomeCliente"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="b472bbf9-1fe6-4545-9938-cebe9401ecf2" isOneWay="false" action="http://tempuri.org/ListaDeClientes" name="ListaDeClientes" bindingOperationName="ListaDeClientes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="21f1bc37-067c-421f-8c7c-1932eea268db" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:44343/ClienteWS.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:ListaDeClientes/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/ListaDeClientes"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e3e79781-6b19-4019-b7c2-da8585defa36" isOneWay="false" action="http://tempuri.org/SalvarCliente" name="SalvarCliente" bindingOperationName="SalvarCliente" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="20059902-3aef-47cf-8702-ceaf1a43dbae" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:44343/ClienteWS.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:SalvarCliente>\r
+         <!--Optional:-->\r
+         <tem:ocliente>\r
+            <tem:Id>0</tem:Id>\r
+            <!--Optional:-->\r
+            <tem:Name>Joao</tem:Name>\r
+            <!--Optional:-->\r
+            <tem:Email>joao@email.com</tem:Email>\r
+            <tem:DOB>2017-02-02</tem:DOB>\r
+         </tem:ocliente>\r
+      </tem:SalvarCliente>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/SalvarCliente"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="9690b4e7-a1a2-426f-b7b2-8bc1f06b1d71" wsaVersion="NONE" name="ClienteWSSoap12" type="wsdl" bindingName="{http://tempuri.org/}ClienteWSSoap12" soapVersion="1_2" anonymous="optional" definition="https://localhost:44343/ClienteWS.asmx?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://localhost:44343/ClienteWS.asmx?wsdl"><con:part><con:url>https://localhost:44343/ClienteWS.asmx?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType/>
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld"/>
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ClienteWSSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn"/>
+      <wsdl:output message="tns:HelloWorldSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClienteWSSoap" type="tns:ClienteWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ClienteWSSoap12" type="tns:ClienteWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClienteWS">
+    <wsdl:port name="ClienteWSSoap" binding="tns:ClienteWSSoap">
+      <soap:address location="https://localhost:44343/ClienteWS.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="ClienteWSSoap12" binding="tns:ClienteWSSoap12">
+      <soap12:address location="https://localhost:44343/ClienteWS.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://localhost:44343/ClienteWS.asmx</con:endpoint></con:endpoints><con:operation id="068d8af8-e8b9-4f22-abcc-56af26de0d11" isOneWay="false" action="http://tempuri.org/HelloWorld" name="HelloWorld" bindingOperationName="HelloWorld" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fa084e17-7855-4b4e-95e0-b17729347dfe" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:44343/ClienteWS.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <tem:HelloWorld/>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/ClienteWSSoap/HelloWorldRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

@@ -13,11 +13,11 @@
                 <th scope="col">Email</th>
                 <th scope="col">Data de nascimento</th>
             </tr>
-            @foreach (Cliente c in Model.Clientes)
+            @foreach (ClientesWS.Clientes c in Model.Clientes)
             {
                 <tr scope="row">
                     <td>
-                        @c.ID
+                        @c.Id
                     </td>
                     <td>
                         @c.Name
@@ -26,7 +26,7 @@
                         @c.Email
                     </td>
                     <td>
-                        @c.DateOfBirth.Date
+                        @c.DOB.Date
                     </td>
                 </tr>
             }
